@@ -4,7 +4,7 @@ module Rack
   class MethodOverrideWithParams < Rack::MethodOverride
 
     def call(env)
-      if env["REQUEST_METHOD"] == "POST"
+      if env["REQUEST_METHOD"] == "POST" || env["REQUEST_METHOD"] == "GET"
         req = Request.new(env)
         method = req.params[METHOD_OVERRIDE_PARAM_KEY] ||
           env[HTTP_METHOD_OVERRIDE_HEADER]
